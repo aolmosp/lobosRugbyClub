@@ -13,11 +13,11 @@ return new class extends Migration
     {
         Schema::create('pending_payments', function (Blueprint $table) {
             $table->id();
-            $table->int('monto');
-            $table->int('tipo');
-            $table->int('user_id');
+            $table->integer('monto');
+            $table->integer('tipo');
+            $table->integer('user_id');
             $table->date('fecha_corresponde');
-            $table->int('estado');
+            $table->integer('estado');
             $table->timestamp('created_at')->nullable();
         });
     }
