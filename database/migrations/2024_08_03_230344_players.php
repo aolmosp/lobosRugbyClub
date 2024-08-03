@@ -13,12 +13,12 @@ return new class extends Migration
     {
         Schema::create('players', function (Blueprint $table) {
             $table->id();
-            $table->int('user_id');
+            $table->integer('user_id');
             $table->string('nombre');
             $table->date('fecha_nacimiento');
             $table->date('fecha_inscripcion');
             $table->timestamp('created_at')->nullable();
-            $table->int('status');
+            $table->integer('status');
             $table->index('user_id');
             $table->index('status');
         });

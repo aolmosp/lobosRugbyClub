@@ -13,12 +13,12 @@ return new class extends Migration
     {
         Schema::create('payments', function (Blueprint $table) {
             $table->id();
-            $table->int('monto');
-            $table->int('user_id');
-            $table->int('pending_payment_id');
+            $table->integer('monto');
+            $table->integer('user_id');
+            $table->integer('pending_payment_id');
             $table->string('canal');
             $table->date('fecha_pago');
-            $table->int('estado');
+            $table->integer('estado');
             $table->string('recibo');
             $table->timestamp('created_at')->nullable();
         });
