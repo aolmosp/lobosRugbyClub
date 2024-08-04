@@ -13,8 +13,6 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule): void
     {
         $schedule->command('app:generate_monthy_payments')->timezone('America/Santiago')->monthlyOn(28, '15:00');
-        $schedule->command('app:generate_monthy_payments')->timezone('America/Santiago')->dailyAt('02:24');
-        $schedule->command('app:generate_monthy_payments')->timezone('America/Santiago')->dailyAt('02:25');
     }
 
     /**
