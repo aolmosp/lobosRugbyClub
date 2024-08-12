@@ -41,58 +41,35 @@
                           </tr>
                         </thead>
                         <tbody class="bg-white divide-y divide-gray-200">
-                          <tr>
-                            <td class="py-5 pl-4 pr-3 text-sm whitespace-nowrap sm:pl-0">
-                              <div class="flex items-center">
-                                <div class="flex-shrink-0 h-11 w-11">
-                                  <img class="rounded-full h-11" src="logo_min.png" alt="">
+                          @foreach ( $players as $player)
+                            <tr>
+                              <td class="py-5 pl-4 pr-3 text-sm whitespace-nowrap sm:pl-0">
+                                <div class="flex items-center">
+                                  <div class="flex-shrink-0 h-11 w-11">
+                                    <img class="rounded-full h-11" src="@if (is_null($player->img_profile)) logo_min.png @else {{$player->img_profile}} @endif" alt="">
+                                  </div>
+                                  <div class="ml-4">
+                                    <div class="font-medium text-gray-900">{{$player->nombre}}</div>
+                                    <div class="mt-1 text-gray-500">{{$player->email}}</div>
+                                  </div>
                                 </div>
-                                <div class="ml-4">
-                                  <div class="font-medium text-gray-900">Angel Olmos</div>
-                                  <div class="mt-1 text-gray-500">angel.olmos@lobosrugby.club</div>
-                                </div>
-                              </div>
-                            </td>
-                            <td class="px-3 py-5 text-sm text-gray-500 whitespace-nowrap">
-                              <span class="inline-flex items-center px-2 py-1 text-xs font-medium text-green-700 rounded-md bg-green-50 ring-1 ring-inset ring-green-600/20">Pagado</span>
-                            </td>
-                            <td class="px-3 py-5 text-sm text-gray-500 whitespace-nowrap">
-                                <span class="inline-flex items-center px-2 py-1 text-xs font-medium text-green-700 rounded-md bg-green-50 ring-1 ring-inset ring-green-600/20">10/08/2024</span>
-                            </td>
-                            <td class="px-3 py-5 text-sm text-gray-500 whitespace-nowrap">Jugador</td>
-                            <td class="px-3 py-5 text-sm text-gray-500 whitespace-nowrap">
-                                <div class="flex flex-row w-full space-x-6">
-                                    <span class="inline-flex rounded-md shadow-sm isolate">
-                                        <button type="button" class="relative inline-flex items-center px-3 py-2 text-sm font-semibold text-gray-900 bg-white rounded-md ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-10">Registrar pago</button>
-                                    </span>                                  
-                                </div>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td class="py-5 pl-4 pr-3 text-sm whitespace-nowrap sm:pl-0">
-                              <div class="flex items-center">
-                                <div class="flex-shrink-0 h-11 w-11">
-                                  <img class="rounded-full h-11" src="logo_min.png" alt="">
-                                </div>
-                                <div class="ml-4">
-                                  <div class="font-medium text-gray-900">Angel Olmos</div>
-                                  <div class="mt-1 text-gray-500">angel.olmos@lobosrugby.club</div>
-                                </div>
-                              </div>
-                            </td>
-                            <td class="px-3 py-5 text-sm text-gray-500 whitespace-nowrap">
-                              <span class="inline-flex items-center px-2 py-1 text-xs font-medium text-red-700 bg-red-200 rounded-md ring-1 ring-inset ring-red-600/20">Deuda</span>
-                            </td>
-                            <td class="px-3 py-5 text-sm text-gray-500 whitespace-nowrap">
-                                <span class="inline-flex items-center px-2 py-1 text-xs font-medium text-red-700 bg-red-200 rounded-md ring-1 ring-inset ring-red-600/20">10/07/2024</span>
-                            </td>
-                            <td class="px-3 py-5 text-sm text-gray-500 whitespace-nowrap">Jugador</td>
-                            <td class="px-3 py-5 text-sm text-gray-500 whitespace-nowrap">
-                                <span class="inline-flex rounded-md shadow-sm isolate">
-                                    <button type="button" class="relative inline-flex items-center px-3 py-2 text-sm font-semibold text-gray-900 bg-white rounded-md ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-10">Registrar pago</button>
-                                </span>                                  
-                            </td>
-                          </tr>
+                              </td>
+                              <td class="px-3 py-5 text-sm text-gray-500 whitespace-nowrap">
+                                <span class="inline-flex items-center px-2 py-1 text-xs font-medium text-green-700 rounded-md bg-green-50 ring-1 ring-inset ring-green-600/20">Pagado</span>
+                              </td>
+                              <td class="px-3 py-5 text-sm text-gray-500 whitespace-nowrap">
+                                  <span class="inline-flex items-center px-2 py-1 text-xs font-medium text-green-700 rounded-md bg-green-50 ring-1 ring-inset ring-green-600/20">10/08/2024</span>
+                              </td>
+                              <td class="px-3 py-5 text-sm text-gray-500 whitespace-nowrap">Jugador</td>
+                              <td class="px-3 py-5 text-sm text-gray-500 whitespace-nowrap">
+                                  <div class="flex flex-row w-full space-x-6">
+                                      <span class="inline-flex rounded-md shadow-sm isolate">
+                                          <button type="button" class="relative inline-flex items-center px-3 py-2 text-sm font-semibold text-gray-900 bg-white rounded-md ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-10">Registrar pago</button>
+                                      </span>                                  
+                                  </div>
+                              </td>
+                            </tr>
+                          @endforeach
                         </tbody>
                       </table>
                     </div>
