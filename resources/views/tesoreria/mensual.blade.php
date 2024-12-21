@@ -265,6 +265,9 @@
                           <template x-for="player in femenino">
                               <option :value="player.id" x-text="player.name"></option>
                           </template>
+                          <template x-for="player in juvenil">
+                            <option :value="player.id" x-text="player.name"></option>
+                        </template>
                         </select>
                       </div>
                       <button x-on:click="tooglePayer" type="button" class="relative -ml-px inline-flex items-center gap-x-1.5 rounded-r-md px-3 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50">
@@ -438,6 +441,18 @@
                       </div>
                     </div>
                     <div>
+                      <label for="email" class="block text-sm font-medium leading-6 text-gray-900">Tipo de cobro</label>
+                      <div class="flex mt-2 rounded-md shadow-sm">
+                        <div class="relative flex items-stretch flex-grow max-w-md focus-within:z-10">
+                          <select x-model="tipo_pago" id="type" name="type" class="block w-full rounded-md border-0 py-1.5 pl-10 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                            <template x-for="tipo_pago in enumTipoPagos">
+                              <option :value="tipo_pago.id" x-text="tipo_pago.desc"></option>
+                            </template>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                    <div>
                       <label for="price" class="block text-sm font-medium leading-6 text-gray-900">Monto del cobro</label>
                       <div class="relative max-w-md mt-2 text-gray-900 rounded-md shadow-sm">
                         <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
@@ -486,6 +501,7 @@
               masculino: [],
               femenino: [],
               juvenil: [],
+              enumTipoPagos: [],
               show_m: true,
               show_f: false,
               show_j: false,
@@ -502,6 +518,7 @@
               divide_cupon_1_format: 0,
               divide_cupon_2_format: 0,
               payment_monto: null,
+              tipo_pago: null,
               new_pending_payment_monto: null,
               date_new_pending: null,
               beca: false,
@@ -521,6 +538,7 @@
                     });
 
                     this.getPlayersData()
+                    this.getTipoPagos()
 
                     flatpickr("#date_pending", {});
               },
@@ -562,6 +580,21 @@
                     );
 
 
+                  });
+              },
+              async getTipoPagos(){
+                $this = this
+                await axios({
+                    headers: {
+                        "Content-Type": "application/json",
+                        Accept: "application/json",
+                    },
+                    method: 'get',
+                    url: `/tipo_pagos`,
+                  })
+                  .then(function (response) {
+                    $this.enumTipoPagos = response.data.tipo_pagos
+                    console.log($this.enumTipoPagos)
                   });
               },
               async getActionsPlayers(){
@@ -686,7 +719,7 @@
                           players: players.map((p) => p),
                           monto: this.new_pending_payment_monto,
                           fecha: this.date_new_pending,
-                          tipo: 1,
+                          tipo: this.tipo_pago,
                           publico: 0,
                         }
                       })

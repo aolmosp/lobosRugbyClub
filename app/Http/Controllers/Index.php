@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\PendingPaymentsTypoEnum;
 use App\Enums\PlayerStatusEnum;
 use App\Models\Payment;
 use App\Models\PendingPayment;
@@ -258,7 +259,8 @@ class Index extends Controller
         return response()->json(['data' => $pending_payments, 'count' => $pending_payments->count()]);
     }
 
-    public function player_pending_save(Request $request){
+    public function player_pending_save(Request $request)
+    {
 
         
         $players = Player::whereIn('id', $request->get('players'))->where('status', 1)->get();
@@ -281,6 +283,21 @@ class Index extends Controller
 
         return response()->json(['message' => 'Cobro/s registrados con exito']);
 
+    }
+
+    public function tipo_pagos()
+    {
+        $tipo_pagos = PendingPaymentsTypoEnum::cases();
+        $tipo_pagos_collect = collect();
+
+        foreach($tipo_pagos as $tipo){
+            $tipo_pagos_collect->add([
+                'id' => $tipo->value,
+                'desc' => $tipo->name,
+            ]);
+        }
+
+        return response()->json(['tipo_pagos' => $tipo_pagos_collect]);
     }
     
 }
