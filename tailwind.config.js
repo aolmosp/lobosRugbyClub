@@ -10,12 +10,29 @@ export default {
     ],
 
     theme: {
+        screens: {
+            'lg': '1024px',
+            'xl': '1280px',
+        },
         extend: {
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
             },
+            padding: {
+                '31': '124px',
+            },
+            gridColumn: {
+                'span-17': 'span 17 / span 17',
+            },
+            gridTemplateColumns: {
+                '17': 'repeat(17, minmax(6.5rem, 1fr))',
+            },
+            gridColumnEnd: {
+                '17': '17',
+              }
         },
     },
 
     plugins: [forms],
+    
 };

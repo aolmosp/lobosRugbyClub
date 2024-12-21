@@ -15,7 +15,7 @@ return new class extends Migration
             'edit-users',
             'ver-cartola',
             'crear-pagos',
-            'eliminar-pagos',            
+            'eliminar-pagos',
         ];
     }
 

@@ -1,1 +1,1 @@
-<img class="object-contain w-full h-48" src="logo.png" alt="Tuple">
+<img class="object-contain w-full h-48" src="{{url('/logo.png')}}" alt="Tuple">

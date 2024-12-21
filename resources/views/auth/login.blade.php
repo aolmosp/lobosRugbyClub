@@ -14,7 +14,7 @@
 
         <!-- Password -->
         <div class="mt-4">
-            <x-input-label for="password" :value="__('Clave')" />
+            <x-input-label for="password" :value="__('Contraseña')" />
 
             <x-text-input id="password" class="block w-full mt-1"
                             type="password"
@@ -25,13 +25,11 @@
         </div>
 
         <div class="flex items-center justify-end mt-4">
-            {{--
             @if (Route::has('password.request'))
                 <a class="text-sm text-gray-600 underline rounded-md hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 " href="{{ route('password.request') }}">
-                    {{ __('¿Olvidaste tu clave?') }}
+                    {{ __('¿Olvidaste tu contraseña?') }}
                 </a>
             @endif
-            --}}
 
             <x-primary-button class="ms-3">
                 {{ __('Ingresar') }}
