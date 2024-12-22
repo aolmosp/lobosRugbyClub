@@ -58,7 +58,7 @@ class User extends Authenticatable
     {
 
         $url = url("/reset-password/{$token}");
-        $client = new PostmarkClient('95504fb8-695b-416b-b52c-0ff485845b41');
+        $client = new PostmarkClient(getenv('POSTMARK_API_TOKEN'));
         $client->sendEmailWithTemplate(
             "contacto@lobosrugby.club",
             $this->email,

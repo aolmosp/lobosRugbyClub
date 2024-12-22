@@ -51,7 +51,7 @@ class Index extends Controller
 
         $players = Player::where('status', '<>', PlayerStatusEnum::INACTIVO )->with(['pendingPayments'])->orderBy('name')->get();
         $pagosJugadores = [];
-        $period_year = CarbonPeriod::create(Carbon::today()->addYear()->firstOfYear(), '1 month', Carbon:today()->addYear()->lastOfYear());
+        $period_year = CarbonPeriod::create(Carbon::today()->firstOfYear(), '1 month', Carbon:today()->lastOfYear());
 
         foreach ($players as $player) {
             $pagosJugadores[$player->id] = [
